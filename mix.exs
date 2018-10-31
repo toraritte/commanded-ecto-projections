@@ -44,8 +44,7 @@ defmodule Commanded.Projections.Ecto.Mixfile do
 
   defp deps do
     [
-      {:commanded, ">= 0.12.0", runtime: false},
-      {:ecto, "~> 3.0", runtime: false},
+      # {:commanded, ">= 0.12.0", runtime: false},
       {:ecto_sql, "~> 3.0", runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:postgrex, "~> 0.14", only: :test},
