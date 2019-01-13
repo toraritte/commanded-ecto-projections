@@ -1,16 +1,11 @@
 # Commanded Ecto projections
 
-Read model projections for [Commanded](https://github.com/commanded/commanded) CQRS/ES applications using [Ecto](https://github.com/elixir-ecto/ecto) for persistence.
+Read   model    projections   via    [Ecto][1]   for
+[Commanded][2] CQRS/ES applications using PostgreSQL
+backend for persistence.
 
----
-
-[Changelog](CHANGELOG.md)
-
-MIT License
-
-[![Build Status](https://travis-ci.org/commanded/commanded-ecto-projections.svg?branch=master)](https://travis-ci.org/commanded/commanded-ecto-projections)
-
----
+[1]: https://github.com/elixir-ecto/ecto
+[2]: https://github.com/commanded/commanded
 
 ### Overview
 
@@ -28,20 +23,20 @@ MIT License
 
 You should already have [Ecto](https://github.com/elixir-ecto/ecto) installed and configured before proceeding. Please follow the Ecto [Getting Started](https://hexdocs.pm/ecto/getting-started.html) guide to get going first.
 
-1. Add `commanded_ecto_projections` to your list of dependencies in `mix.exs`:
+1. Add `commanded_postgres_read_model_projector` to your list of dependencies in `mix.exs`:
 
     ```elixir
     def deps do
       [
-        {:commanded_ecto_projections, "~> 0.7"},
+        {:commanded_postgres_read_model_projector, "~> 0.7"},
       ]
     end
     ```
 
-2. Configure `commanded_ecto_projections` with the Ecto repo used by your application:
+2. Configure `commanded_postgres_read_model_projector` with the Ecto repo used by your application:
 
     ```elixir
-    config :commanded_ecto_projections,
+    config :commanded_postgres_read_model_projector,
       repo: MyApp.Projections.Repo
     ```
 
@@ -94,7 +89,7 @@ for the `ProjectionVersion` schema. There are two options to do this:
 1. provide a global prefix via the config
 
 ```elixir
-config :commanded_ecto_projections,
+config :commanded_postgres_read_model_projector,
   schema_prefix: "example_schema_prefix"
 ```
 
@@ -277,6 +272,14 @@ mix deps.get
 MIX_ENV=test mix do ecto.create, ecto.migrate
 mix test
 ```
+
+---
+
+**NOTE**: Anything below this note relates to [`commanded/commended_ecto_projections`](https://github.com/commanded/commanded-ecto-projections).
+
+[![Build Status](https://travis-ci.org/commanded/commanded-ecto-projections.svg?branch=master)](https://travis-ci.org/commanded/commanded-ecto-projections)
+
+[Changelog](CHANGELOG.md)
 
 ### Contributors
 

@@ -5,7 +5,7 @@ defmodule Commanded.Projections.Ecto.Mixfile do
 
   def project do
     [
-      app: :commanded_ecto_projections,
+      app: :commanded_postgres_read_model_projector,
       version: @version,
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -54,14 +54,14 @@ defmodule Commanded.Projections.Ecto.Mixfile do
 
   defp description do
     """
-    Read model projections for Commanded using Ecto
+    Read model projections via Ecto for Commanded applications using PostgreSQL for persistence.
     """
   end
 
   defp docs do
     [
       main: "Commanded.Projections.Ecto",
-      canonical: "http://hexdocs.pm/commanded_ecto_projections",
+      # canonical: "http://hexdocs.pm/commanded_ecto_projections",
       source_ref: "v#{@version}"
     ]
   end
@@ -75,11 +75,11 @@ defmodule Commanded.Projections.Ecto.Mixfile do
         "LICENSE*",
         "priv/repo/migrations"
       ],
-      maintainers: ["Ben Smith"],
+      maintainers: ["Attila Gulyas"],
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/commanded/commanded-ecto-projections",
-        "Docs" => "https://hexdocs.pm/commanded_ecto_projections/"
+        "GitHub" => "https://github.com/toraritte/commanded-postgres-read-model-projector",
+        # "Docs" => "https://hexdocs.pm/commanded_ecto_projections/"
       }
     ]
   end

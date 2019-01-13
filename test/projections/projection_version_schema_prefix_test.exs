@@ -14,10 +14,10 @@ defmodule Commanded.Projections.ProjectionVersionSchemaPrefixTest do
   end
 
   setup do
-    schema_prefix = Application.get_env(:commanded_ecto_projections, :schema_prefix)
+    schema_prefix = Application.get_env(:commanded_postgres_read_model_projector, :schema_prefix)
 
     on_exit(fn ->
-      Application.put_env(:commanded_ecto_projections, :schema_prefix, schema_prefix)
+      Application.put_env(:commanded_postgres_read_model_projector, :schema_prefix, schema_prefix)
     end)
 
     Ecto.Adapters.SQL.Sandbox.checkout(Repo)
@@ -36,7 +36,7 @@ defmodule Commanded.Projections.ProjectionVersionSchemaPrefixTest do
   end
 
   test "should allow custom schema prefix in application config" do
-    Application.put_env(:commanded_ecto_projections, :schema_prefix, "app-config-schema-prefix")
+    Application.put_env(:commanded_postgres_read_model_projector, :schema_prefix, "app-config-schema-prefix")
 
     defmodule AppConfigSchemaPrefixProjector do
       use Commanded.Projections.Ecto, name: "app-config-schema-prefix-projector"

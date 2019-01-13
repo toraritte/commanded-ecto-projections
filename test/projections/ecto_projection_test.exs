@@ -96,10 +96,10 @@ defmodule Commanded.Projections.EctoProjectionTest do
   end
 
   test "should ensure repo is configured" do
-    repo = Application.get_env(:commanded_ecto_projections, :repo)
+    repo = Application.get_env(:commanded_postgres_read_model_projector, :repo)
 
     try do
-      Application.put_env(:commanded_ecto_projections, :repo, nil)
+      Application.put_env(:commanded_postgres_read_model_projector, :repo, nil)
 
       assert_raise RuntimeError,
                    "Commanded Ecto projections expects :repo to be configured in environment",
@@ -111,15 +111,15 @@ defmodule Commanded.Projections.EctoProjectionTest do
                      """)
                    end
     after
-      Application.put_env(:commanded_ecto_projections, :repo, repo)
+      Application.put_env(:commanded_postgres_read_model_projector, :repo, repo)
     end
   end
 
   test "should allow to set `:repo` as an option" do
-    repo = Application.get_env(:commanded_ecto_projections, :repo)
+    repo = Application.get_env(:commanded_postgres_read_model_projector, :repo)
 
     try do
-      Application.put_env(:commanded_ecto_projections, :repo, nil)
+      Application.put_env(:commanded_postgres_read_model_projector, :repo, nil)
 
       assert Code.eval_string("""
              defmodule ProjectorConfiguredViaOpts do
@@ -129,7 +129,7 @@ defmodule Commanded.Projections.EctoProjectionTest do
              end
              """)
     after
-      Application.put_env(:commanded_ecto_projections, :repo, repo)
+      Application.put_env(:commanded_postgres_read_model_projector, :repo, repo)
     end
   end
 

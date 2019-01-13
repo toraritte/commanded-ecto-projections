@@ -1,6 +1,8 @@
 defmodule Commanded.Projections.Ecto do
   @moduledoc """
-  Read model projections for [Commanded](https://hex.pm/packages/commanded) using Ecto.
+  Read model projections via [Ecto](https://github.com/elixir-ecto/ecto) for
+  [Commanded](https://github.com/commanded/commanded) CQRS/ES  applications
+  using PostgreSQL backend for persistence.
 
   Example usage:
 
@@ -26,11 +28,11 @@ defmodule Commanded.Projections.Ecto do
     opts = opts || []
 
     schema_prefix =
-      opts[:schema_prefix] || Application.get_env(:commanded_ecto_projections, :schema_prefix)
+      opts[:schema_prefix] || Application.get_env(:commanded_postgres_read_model_projector, :schema_prefix)
 
     quote location: :keep do
       @opts unquote(opts)
-      @repo @opts[:repo] || Application.get_env(:commanded_ecto_projections, :repo) ||
+      @repo @opts[:repo] || Application.get_env(:commanded_postgres_read_model_projector, :repo) ||
               raise("Commanded Ecto projections expects :repo to be configured in environment")
       @projection_name @opts[:name] || raise("#{inspect(__MODULE__)} expects :name to be given")
       @schema_prefix unquote(schema_prefix)
